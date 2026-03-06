@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="À propos, outils, pipeline et CV de Lawrence Girard-Hodges – Artiste 3D & Directeur de la photographie, spécialisé en dark fantasy, horreur cosmique et environnements industriels.">
+<title>À propos & CV — Lawrence Girard-Hodges</title>
+<link rel="icon" href="assets/images/ui/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+/* ─── HERO PAGE ─── */
+.page-hero {
+  min-height: 55vh; display: flex; align-items: flex-end;
+  padding: 10rem 3rem 5rem; position: relative; overflow: hidden;
+  background: var(--bg-surface);
+}
+.page-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 20% 60%, rgba(26,58,58,0.2), transparent),
+    radial-gradient(ellipse 40% 40% at 80% 30%, rgba(107,32,32,0.08), transparent);
+}
+.page-hero-inner { position: relative; z-index: 2; max-width: 800px; }
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700; line-height: 1.1;
+}
+
+/* ─── CORPS ─── */
+.about-body { max-width: 1100px; margin: 0 auto; padding: 6rem 3rem; }
+
+.about-block { margin-bottom: 6rem; }
+.block-title {
+  font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 600; margin-bottom: 2.5rem;
+  padding-bottom: 1rem; border-bottom: 1px solid rgba(201,168,76,0.15);
+  display: flex; align-items: center; gap: 1.5rem;
+}
+.block-title::before { content: ''; width: 40px; height: 1px; background: var(--accent); }
+
+/* Portrait + texte intro */
+.about-intro-grid {
+  display: grid; grid-template-columns: 320px 1fr;
+  gap: 6rem; align-items: start;
+}
+.about-portrait-wrap { position: relative; }
+.about-portrait-wrap img {
+  width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover;
+}
+.about-portrait-wrap::before {
+  content: ''; position: absolute;
+  inset: -12px -12px 12px 12px;
+  border: 1px solid rgba(201,168,76,0.2);
+  pointer-events: none;
+}
+.about-text-block p {
+  font-family: var(--font-body); font-size: 1.1rem;
+  color: var(--text-secondary); line-height: 2; margin-bottom: 1.5rem;
+}
+.about-text-block strong { color: var(--text-primary); font-weight: 400; }
+
+/* Sous-titre de section interne */
+.sub-label {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--accent);
+  margin: 2.5rem 0 1.2rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.sub-label::before { content: '—'; color: var(--accent-dim); }
+
+/* Listes */
+.about-ul {
+  list-style: none; padding: 0; margin: 0 0 1.5rem;
+}
+.about-ul li {
+  font-family: var(--font-body); font-size: 1.05rem;
+  color: var(--text-secondary); padding: 0.7rem 0 0.7rem 2rem;
+  position: relative; line-height: 1.7;
+  border-bottom: 1px solid rgba(201,168,76,0.04);
+}
+.about-ul li::before {
+  content: '—'; position: absolute; left: 0;
+  color: var(--accent-dim); font-family: var(--font-mono); font-size: 0.7rem;
+}
+.about-ul strong { color: var(--text-primary); font-weight: 400; }
+
+/* Tags outils */
+.tools-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+.tool-tag {
+  font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.15em;
+  padding: 0.4rem 0.9rem; background: var(--accent-glow);
+  border: 1px solid rgba(201,168,76,0.2); color: var(--accent-dim);
+  text-transform: uppercase;
+}
+
+/* Matériel */
+.hardware-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1rem; margin-top: 1rem;
+}
+.hw-card {
+  background: var(--bg-card); border: 1px solid rgba(201,168,76,0.08);
+  padding: 1rem 1.5rem;
+}
+.hw-label {
+  font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.25em;
+  color: var(--accent-dim); text-transform: uppercase; margin-bottom: 0.3rem;
+}
+.hw-value { font-family: var(--font-body); font-size: 1rem; color: var(--text-secondary); }
+
+/* Timeline expérience */
+.exp-timeline { margin-top: 1.5rem; }
+.exp-entry {
+  padding: 1.8rem 0 1.8rem 2rem;
+  border-left: 1px solid rgba(201,168,76,0.15);
+  position: relative; margin-bottom: 0.5rem;
+}
+.exp-entry::before {
+  content: ''; position: absolute; left: -4.5px; top: 2.2rem;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent-dim); border: 1px solid var(--accent);
+}
+.exp-date {
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.2em;
+  color: var(--accent-dim); text-transform: uppercase;
+}
+.exp-role {
+  font-family: var(--font-display); font-size: 1.15rem;
+  font-weight: 600; margin: 0.4rem 0 0.2rem;
+}
+.exp-place {
+  font-family: var(--font-body); color: var(--text-secondary);
+  font-size: 0.95rem; font-style: italic; margin-bottom: 0.6rem;
+}
+.exp-desc {
+  font-family: var(--font-body); color: var(--text-muted);
+  font-size: 0.95rem; line-height: 1.8;
+}
+
+/* Download CV */
+.cv-dl {
+  display: inline-flex; align-items: center; gap: 1rem;
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--bg-deep);
+  background: var(--accent); padding: 1rem 2.5rem;
+  text-decoration: none; transition: background 0.3s; margin: 1.5rem 0 3rem;
+}
+.cv-dl:hover { background: #e0bc5a; }
+
+/* Langues */
+.langues-grid { display: flex; gap: 4rem; flex-wrap: wrap; margin-top: 1rem; }
+.lang-item { }
+.lang-name {
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.25em;
+  color: var(--accent-dim); text-transform: uppercase; margin-bottom: 0.3rem;
+}
+.lang-level { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; }
+
+@media (max-width: 900px) {
+  .about-intro-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-portrait-wrap { max-width: 300px; }
+  .hardware-grid { grid-template-columns: 1fr; }
+  .about-body { padding: 4rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">L G H</a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html#works">Travaux</a>
+    <a href="projet/bellow-challenger-deep.html">Bellow Challenger Deep</a>
+    <a href="about.html" class="active">À propos</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner reveal">
+    <div class="section-label">Profil · Pipeline · CV</div>
+    <h1>À propos &amp; CV</h1>
+  </div>
+</div>
+
+<div class="about-body">
+
+  <!-- ─── À PROPOS ─── -->
+  <div class="about-block reveal">
+    <h2 class="block-title">À propos</h2>
+    <div class="about-intro-grid">
+      <div class="about-portrait-wrap">
+        <img src="assets/images/portrait/portraitlawrence.jpg"
+             alt="Portrait de Lawrence Girard-Hodges">
+      </div>
+      <div class="about-text-block">
+        <p>
+          Je suis un <strong>artiste 3D</strong> basé en France, avec un parcours en direction
+          de la photographie et en mise en scène. Mon travail se concentre sur la <strong>dark fantasy</strong>,
+          l'<strong>horreur cosmique</strong> et les <strong>environnements industriels</strong>,
+          toujours avec un fort sens de la composition cinématographique.
+        </p>
+        <div class="sub-label">Ce que je fais</div>
+        <ul class="about-ul">
+          <li>Personnages et créatures pour des univers dark fantasy et horrifiques.</li>
+          <li>Véhicules et accessoires avec une approche réaliste et industrielle.</li>
+          <li>Environnements abyssaux et historiques avec un travail poussé sur l'ambiance et la lumière.</li>
+          <li>Keyframes et courtes séquences pour bandes-annonces, showreels et courts-métrages.</li>
+        </ul>
+        <div class="sub-label">Ma manière de travailler</div>
+        <ul class="about-ul">
+          <li>Partir d'une intention narrative claire : qui on suit, quel moment, quelle émotion.</li>
+          <li>Bloquer d'abord la composition et la lumière, puis détailler ce qui compte le plus à l'image.</li>
+          <li>Utiliser un texturing non destructif avec masques superposés, salissures et narration dans les surfaces.</li>
+          <li>Garder un éclairage et un étalonnage cohérents d'un plan à l'autre et d'une séquence à l'autre.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── OUTILS & PIPELINE ─── -->
+  <div class="about-block reveal">
+    <h2 class="block-title">Outils · Pipeline · Matériel</h2>
+
+    <div class="sub-label">Outils principaux</div>
+    <div class="tools-tags">
+      <span class="tool-tag">Blender</span>
+      <span class="tool-tag">ZBrush</span>
+      <span class="tool-tag">Substance Painter</span>
+      <span class="tool-tag">Photoshop</span>
+      <span class="tool-tag">DaVinci Resolve</span>
+      <span class="tool-tag">Marvelous Designer</span>
+      <span class="tool-tag">LiquiGen</span>
+      <span class="tool-tag">Cascadeur</span>
+      <span class="tool-tag">Gaea 2.0</span>
+      <span class="tool-tag">RealityScan</span>
+    </div>
+
+    <div class="sub-label" style="margin-top:2.5rem">Pipeline</div>
+    <ul class="about-ul">
+      <li><strong>Blender / ZBrush</strong> – sculpture &amp; modélisation hard surface, retopologie, UV, rigging.</li>
+      <li><strong>Substance Painter</strong> – texturing PBR avec masques superposés et détails fins de surface.</li>
+      <li><strong>Blender · Cycles</strong> – lookdev &amp; rendu final avec éclairage cinématographique.</li>
+      <li><strong>DaVinci Resolve</strong> – compositing, étalonnage et montage final du reel ou du court-métrage.</li>
+    </ul>
+
+    <div class="sub-label" style="margin-top:2.5rem">Inspirations</div>
+    <p style="font-family:var(--font-body);font-size:1.1rem;color:var(--text-secondary);line-height:2;margin-bottom:1rem">
+      Ma référence principale est <strong style="color:var(--text-primary);font-weight:400">Ian Hubert</strong>,
+      pour la façon dont il mélange réalisme brut, narration et workflows incroyablement efficaces.
+      Je m'inspire aussi d'artistes tels que :
+    </p>
+    <ul class="about-ul">
+      <li>Jama Jurabaev – concept art cinématographique &amp; environnements portés par l'ambiance.</li>
+      <li>Marek Denko – récits photoréalistes urbains / industriels.</li>
+      <li>Raphaël Lacoste – mondes vastes et paysages atmosphériques.</li>
+      <li>Paul Chadeisson – industrie lourde, architecture sci-fi et sens de l'échelle.</li>
+      <li>Pascal Blanche – univers stylisés, sombres et nourris de mythologie.</li>
+      <li>Vitaly Bulgarov – design hard surface ultra-détaillé et mechas.</li>
+    </ul>
+
+    <div class="sub-label" style="margin-top:2.5rem">Matériel</div>
+    <div class="hardware-grid">
+      <div class="hw-card">
+        <div class="hw-label">CPU</div>
+        <div class="hw-value">Intel Core i9-14900KF</div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-label">GPU</div>
+        <div class="hw-value">NVIDIA GeForce RTX 3080</div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-label">Moniteurs</div>
+        <div class="hw-value">Gigabyte M32G5Q · Eizo CG2420</div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-label">Tablette</div>
+        <div class="hw-value">Huion Kamvas Pro 16+</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── EXPÉRIENCE ─── -->
+  <div class="about-block reveal">
+    <h2 class="block-title">Expérience professionnelle</h2>
+    <a href="docs/CV_Lawrence_Girard_Hodges_3D_Artist.pdf"
+       class="cv-dl" target="_blank" rel="noopener" download>
+      ↓ &nbsp; Voir &amp; télécharger le CV complet (PDF)
+    </a>
+    <div class="exp-timeline">
+      <div class="exp-entry">
+        <div class="exp-date">2025 – Présent</div>
+        <div class="exp-role">Artiste 3D Freelance</div>
+        <div class="exp-place">Télétravail</div>
+        <div class="exp-desc">
+          Création d'assets 3D et d'environnements avec un fort accent sur la narration et la
+          composition cinématographique. Spécialisation dans les univers de fantasy / dark fantasy.
+          Pipeline complet : modélisation, texturing, éclairage, rendu.
+        </div>
+      </div>
+      <div class="exp-entry">
+        <div class="exp-date">2022 – 2025</div>
+        <div class="exp-role">Studio Manager &amp; Head of Operations</div>
+        <div class="exp-place">Uncrop Group, Paris</div>
+        <div class="exp-desc">
+          Coordination des opérations de studio, tournages et équipes. Gestion du matériel
+          et des budgets, relation client et logistique plateau pour des productions photo et vidéo.
+        </div>
+      </div>
+      <div class="exp-entry">
+        <div class="exp-date">2017 – 2020</div>
+        <div class="exp-role">Technicien audiovisuel</div>
+        <div class="exp-place">PhotoCineRent, Paris</div>
+        <div class="exp-desc">
+          Support technique et maintenance de caméras cinéma et systèmes d'éclairage haut de gamme,
+          développant une connaissance fine du hardware qui nourrit aujourd'hui mon travail de rendu 3D.
+        </div>
+      </div>
+      <div class="exp-entry">
+        <div class="exp-date">2010 – 2016</div>
+        <div class="exp-role">Chef opérateur &amp; Cadreur</div>
+        <div class="exp-place">Productions variées · Afrique du Sud &amp; France</div>
+        <div class="exp-desc">
+          Travail sur documentaires, courts-métrages, clips musicaux et films institutionnels
+          en tant que directeur de la photographie, cadreur, monteur et étalonneur.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── LANGUES ─── -->
+  <div class="about-block reveal">
+    <h2 class="block-title">Langues</h2>
+    <div class="langues-grid">
+      <div class="lang-item">
+        <div class="lang-name">Français</div>
+        <div class="lang-level">Langue maternelle</div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-name">Anglais</div>
+        <div class="lang-level">Maîtrise professionnelle</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /about-body -->
+
+<footer>
+  <span>© 2025 Lawrence Girard-Hodges. Tous droits réservés.</span>
+  <a href="index.html">← Retour au portfolio</a>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
