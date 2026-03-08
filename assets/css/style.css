@@ -4,6 +4,13 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* ─── Reset liens — supprime le violet/souligné du navigateur ─── */
+a { color: inherit; text-decoration: none; }
+a:visited { color: inherit; }
+
+/* ─── Fix liseret blanc sous les images (baseline gap) ─── */
+img { display: block; vertical-align: bottom; }
+
 :root {
   --bg-deep: #08070b;
   --bg-surface: #0e0d13;
@@ -177,9 +184,9 @@ section { padding: 8rem 3rem; position: relative; }
   padding: 0.4rem 1rem;
   border: 1px solid var(--text-muted);
   color: var(--text-muted);
-  transition: var(--transition);
+  cursor: default;
+  pointer-events: none;
 }
-.hero-tag:hover { border-color: var(--accent); color: var(--accent); }
 .hero-scroll {
   position: absolute; bottom: 3rem; left: 50%;
   transform: translateX(-50%);
@@ -215,6 +222,8 @@ section { padding: 8rem 3rem; position: relative; }
   background: var(--bg-card);
   border: 1px solid rgba(201,168,76,0.08);
   transition: border-color 0.4s;
+  color: var(--text-primary);
+  text-decoration: none;
 }
 .featured-card:hover { border-color: rgba(201,168,76,0.2); }
 .featured-img { position: relative; overflow: hidden; min-height: 500px; }
@@ -329,7 +338,7 @@ section { padding: 8rem 3rem; position: relative; }
   transition: border-color 0.3s;
 }
 .tool:hover { border-color: rgba(201,168,76,0.2); }
-.tool img { width: 32px; height: 32px; object-fit: contain; filter: brightness(0.8); transition: filter 0.3s; }
+.tool img { width: 32px; height: 32px; object-fit: contain; filter: brightness(0.8); transition: filter 0.3s; display: block; margin: 0 auto; }
 .tool:hover img { filter: brightness(1); }
 .tool span { font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; }
 
