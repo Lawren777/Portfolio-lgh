@@ -103,7 +103,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ─── Lien actif dans la nav ─── */
+  /* ─── Video Lightbox (clic sur miniatures vidéo de l'index) ─── */
+  const videoItems = document.querySelectorAll('.work-item[data-video-src]');
+  if (videoItems.length > 0) {
+    // Créer le lightbox vidéo dynamiquement
+    const vLightbox = document.createElement('div');
+    vLightbox.id = 'videoLightbox';
+    vLightbox.style.cssText = `
+      position:fixed;inset:0;z-index:2000;
+      background:rgba(0,0,0,0.95);
+      display:none;align-items:center;justify-content:center;
+      cursor:pointer;
+    `;
+    vLightbox.innerHTML = `
+      <button style="position:absolute;top:2rem;right:2rem;background:none;border:1px solid rgba(201,168,76,0.4);color:var(--accent);font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.15em;padding:0.6rem 1.2rem;cursor:pointer" id="vLightboxClose">ESC · FERMER</button>
+      <video id="vLightboxVideo" controls style="max-width:90vw;max-height:85vh;display:block;outline:none" playsinline></video>
+    `;
+    document.body.appendChild(vLightbox);
+
+    const vVideo = document.getElementById('vLightboxVideo');
+    const vClose = document.getElementById('vLightboxClose');
+
+    const openVideo = (src) => {
+      vVideo.src = src;
+      vLightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      vVideo.play().catch(() => {});
+    };
+    const closeVideo = () => {
+      vLightbox.style.display = 'none';
+      document.body.style.overflow = '';
+      vVideo.pause();
+      vVideo.src = '';
+    };
+
+    videoItems.forEach(item => {
+      item.addEventListener('click', () => openVideo(item.dataset.videoSrc));
+    });
+    vClose.addEventListener('click', (e) => { e.stopPropagation(); closeVideo(); });
+    vLightbox.addEventListener('click', (e) => { if (e.target === vLightbox) closeVideo(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && vLightbox.style.display === 'flex') closeVideo();
+    });
+  }
+
+
   const path = window.location.pathname;
   document.querySelectorAll('.nav-links a').forEach(link => {
     const href = link.getAttribute('href');
